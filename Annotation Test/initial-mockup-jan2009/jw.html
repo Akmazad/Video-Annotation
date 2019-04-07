@@ -1,0 +1,273 @@
+<html>
+<head>
+<title>AZ PLAYER-</title>
+<!--<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />-->
+<style type="text/css" media="screen">
+
+.container {
+	width: 360px;
+	height: 260px;
+	text-align: left;
+	border-color:#00FFFF;
+	position: relative;
+
+	}
+.placeholderclass
+{
+	/*margin: 0 auto;*/
+}
+.divDescriptionClass
+{
+	font-family:Verdana;
+	font-size:16px;
+	color:#CC0000;
+}
+</style>
+
+<script type="text/javascript" src="swfobject.js"></script>
+<script type="text/javascript">
+
+var currentState = "NONE"; 
+var previousState = "NONE"; 
+var firstPlay = 1;
+var videoID = 0;
+
+var player = null;
+function playerReady(thePlayer) {
+	
+	player = document.getElementById(thePlayer.id);
+	addListeners();
+}
+
+
+function addListeners() {
+	if (player) { 
+		player.addModelListener("STATE", "stateListener");
+	} else {
+		setTimeout("addListeners()",100);
+	}
+}
+
+
+function stateListener(obj) { //IDLE, BUFFERING, PLAYING, PAUSED, COMPLETED
+	currentState = obj.newstate; 
+	previousState = obj.oldstate; 
+
+	var tmp = document.getElementById("stat");
+	if (tmp) { 
+		/*tmp.innerHTML = "current state: " + currentState + "<br>previous state: " + previousState; */
+	}
+
+	if(firstPlay == 1)
+	{
+		if ((currentState == "BUFFERING")&&(previousState == "IDLE"))
+		{
+			var imagePath = "./img/image-01.JPG";
+
+			document.getElementById("divpicture").style.backgroundImage = "url("+ imagePath + ")";
+			
+			document.getElementById("divDescription").innerHTML = DescriptionArrary[videoID];
+		} 
+		firstPlay = 0;
+	}
+	
+	if ((currentState == "COMPLETED")&&((previousState == "PLAYING") || (previousState == "PAUSED"))) 
+	{
+		/*change all events again*/
+
+		/*change video*/
+		videoID = videoID + 1;
+
+		if (videoID == 3)
+		{
+			videoID = 0;
+			return;
+		}
+		player.sendEvent('LOAD', lst[videoID]);
+		
+		/*change description*/
+		document.getElementById("divDescription").innerHTML = DescriptionArrary[videoID];
+		
+		/*change images*/
+		var imagePath = "./img/image-0" + (videoID+1) + ".JPG";
+
+		document.getElementById("divpicture").style.backgroundImage = "url("+ imagePath + ")";
+
+	}
+}
+
+function changeProject(id)
+{
+	videoID = id;
+	/*change div image background*/
+	var imagePath = "./img/image-0" + (id + 1) + ".JPG";
+	document.getElementById("divpicture").style.backgroundImage = "url("+ imagePath + ")";
+
+	/*change description*/
+	document.getElementById("divDescription").innerHTML = DescriptionArrary[id];
+	
+	/*change video*/
+/*	player.sendEvent('STOP');*/
+	player.sendEvent('LOAD', lst[videoID]);
+	player.sendEvent('PLAY', 'true');
+}
+
+
+
+function createPlayer() 
+{
+
+	/*setting description*/
+	/*document.getElementById("divDescription").innerHTML = DescriptionArrary[0];*/
+	
+	/*setting image*/
+	/*var imagePath = "./img/image-01.JPG";
+	document.getElementById("divpicture").style.backgroundImage = "url("+ imagePath + ")";*/
+	
+var flashvars = {
+        bufferlength:"2",
+        streamer:"rtmp://192.168.1.63/alfa",
+        file:"test00.flv",
+        type:"camera"
+//		file:"http://content.bitsontherun.com/videos/3ta6fhJQ.flv",
+//		autostart:"false",
+//		playlist:"bottom",
+//		playlistsize:"100",
+//		shuffle:"false",
+//		repeat:"always"
+}
+
+var params = {
+allowfullscreen:"true",
+allowscriptaccess:"always"
+}
+
+var attributes = {
+id:"player1",
+name:"player1"
+}
+
+swfobject.embedSWF("player.swf", "placeholder1", "320", "196", "10.0.12.36", false, flashvars, params, attributes);
+/*swfobject.embedSWF("player.swf", "placeholder1", "320", "196", "9.0.115", false, flashvars, params, attributes);*/
+
+}
+
+/*inline playlist*/
+
+var lst = new Array();
+lst[0] = {  
+	author:"Jeroen Wijering",
+	description:"Nightly heart pounding paranoia - What was that in the grass?",
+	autostart: "true",
+	file:"http://content.bitsontherun.com/videos/3ta6fhJQ.flv",
+	link:"http://www.jeroenwijering.com",
+	image:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/thumb-video.jpg",
+	title:"Grass by Night",
+	type:"video"
+	
+		/*author:"Anonymous",
+		description:"STARTING VIDEO",
+		file:"http://content.bitsontherun.com/videos/3ta6fhJQ.flv",
+		autostart:"true",
+		playlist:"bottom",
+		playlistsize:"100",
+		shuffle:"false",
+		repeat:"always"*/
+}
+
+lst[1] = {
+	author:"Anonymous",
+	description:"Classical TV testpicture.png image and whitenoise.mp3",
+	file:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/sound_whitenoise.mp3",
+	autostart:"true",
+	link:"http://www.jeroenwijering.com",
+	image:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/testpicture.png",
+	title:"Testpicture",
+	type:"sound"
+}
+
+lst[2] = {
+	author:"Anonymous",
+	description:"Classical TV testpicture - and the annoying 440hz tone.",
+	file:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/testvideo.flv",
+		autostart:"true",
+	link:"http://www.jeroenwijering.com",
+	image:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/thumb-testvideo.gif",
+	title:"Testvideo",
+	type:"video"
+}
+
+/*lst[3] = {  
+	author:"Vivie",
+	description:"The art exhibition is over now - but the song is still cute.",
+	file:"http://www.metinberlin.org/files/amerika.mp3",
+	link:"http://www.metinberlin.org",
+	image:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/franzosen.jpg",
+	title:"a.m.e.r.i.k.a",
+	type:"sound"
+}
+
+lst[4] = {  
+	author:"Anonymous",
+	description:"Classical TV testpicture - and the annoying 440hz tone.",
+	file:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/testvideo.flv",
+	link:"http://www.jeroenwijering.com",
+	image:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/thumb-testvideo.gif",
+	title:"Testvideo",
+	type:"video"
+}*/
+
+</script>
+</head>
+<body onLoad="createPlayer();" >
+<table width="50%">
+	<tr>
+		<td><a href="javascript:changeProject(0)">1st Project</a></td>
+		<td><a href="javascript:changeProject(1)">2nd Project</a></td>
+		<td><a href="javascript:changeProject(2)">3rd Project</a></td>
+	
+	</tr>
+</table>
+<br />
+<br />
+<table style="border-color:#FF0000;" >
+	<tr>
+		<td width="500x" height="260px" >
+		<div class="container" id="divpicture"></div>
+	  </td>
+		<td>
+		<table>
+		<tr>
+		<td>
+			<div id="placeholder1" style="height:244px; width:196px;">
+			</div>
+		  </td>
+		  </tr>
+			<tr>
+			<td>
+				<div id="divDescription" class="divDescriptionClass"></div>
+
+			</td>
+			</tr>
+		  </table>
+		</td>
+	</tr>
+
+</table>
+
+<br>
+
+
+<div id="stat"></div>
+<script type="text/javascript">
+
+var DescriptionArrary = new Array();
+
+DescriptionArrary[0] = "1: This is a Sample DescripTion";
+DescriptionArrary[1] = "2: This is a Sample DescripTion";
+DescriptionArrary[2] = "3: This is a Sample DescripTion";
+</script>
+</body>
+</html>
+
+

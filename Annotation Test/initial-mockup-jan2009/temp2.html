@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Document sans nom</title>
+
+<script language="JavaScript">
+<!--
+// F. Permadi May 2000
+
+var currentState = "NONE";
+var previousState = "NONE";
+
+var player = null;
+function playerReady(thePlayer) {
+player = document.getElementById(thePlayer.id);
+addListeners();
+}
+
+
+function addListeners() {
+if (player) {
+player.addModelListener("STATE", "stateListener");
+} else {
+setTimeout("addListeners()",100);
+}
+}
+
+
+function stateListener(obj) { //IDLE, BUFFERING, PLAYING, PAUSED, COMPLETED
+currentState = obj.newstate;
+previousState = obj.oldstate;
+
+var tmp = document.getElementById("stat");
+if (tmp) {
+tmp.innerHTML = "current state: " + currentState +
+"<br>previous state: " + previousState;
+}
+
+if ((currentState == "COMPLETED")&&(previousState == "PLAYING")) {
+document.location.href="http://www.jeroenwijering.com/?item=JW_FLV_Media_Player";
+}
+}
+
+
+function getFlashMovieObject(movieName)
+{
+if (window.document[movieName])
+{
+return window.document[movieName];
+}
+if (navigator.appName.indexOf("Microsoft Internet")==-1)
+{
+if (document.embeds && document.embeds[movieName])
+return document.embeds[movieName];
+}
+else // if (navigator.appName.indexOf("Microsoft Internet")!=-1)
+{
+return document.getElementById(movieName);
+}
+}
+
+function StopFlashMovie()
+{
+var flashMovie=getFlashMovieObject("myFlashMovie");
+flashMovie.StopPlay();
+}
+
+function PlayFlashMovie()
+{
+var flashMovie=getFlashMovieObject("myFlashMovie");
+flashMovie.Play();
+//embed.nativeProperty.anotherNativeMethod();
+}
+
+function RewindFlashMovie()
+{
+var flashMovie=getFlashMovieObject("myFlashMovie");
+flashMovie.Rewind();
+}
+
+function NextFrameFlashMovie()
+{
+var flashMovie=getFlashMovieObject("myFlashMovie");
+// 4 is the index of the property for _currentFrame
+var currentFrame=flashMovie.TGetProperty("/", 4);
+var nextFrame=parseInt(currentFrame);
+if (nextFrame>=10)
+nextFrame=0;
+flashMovie.GotoFrame(nextFrame);
+}
+
+
+function ZoominFlashMovie()
+{
+var flashMovie=getFlashMovieObject("myFlashMovie");
+flashMovie.Zoom(90);
+}
+
+function ZoomoutFlashMovie()
+{
+var flashMovie=getFlashMovieObject("myFlashMovie");
+flashMovie.Zoom(110);
+}
+
+
+function SendDataToFlashMovie()
+{
+var flashMovie=getFlashMovieObject("myFlashMovie");
+flashMovie.SetVariable("/:message", document.controller.Data.value);
+}
+
+function ReceiveDataFromFlashMovie()
+{
+var flashMovie=getFlashMovieObject("myFlashMovie");
+var message=flashMovie.GetVariable("/:message");
+document.controller.Data.value=message;
+}
+
+
+//-->
+</script>
+</head>
+<body>
+
+
+<noscript>
+<div style="background-color:red;color:white;width:160px">
+<strong>JavaScript est désactivé!</strong>
+<br/>Pour afficher ce contenu, vous devez utiliser un navigateur compatible avec JavaScript.</div>
+</noscript>
+</ins>
+<span id="avreloaded0" class="allvideos">
+<ins>
+<div id="warnflashavreloaded0" style="background-color:red;color:white;width:160px;visibility:hidden">
+<strong>Adobe Flash Player non installé ou plus vieux que 9.0.115!</strong>
+<br/>
+<a href="http://www.adobe.com/go/getflashplayer" onclick="window.open(this.href);return false;" onkeypress="window.open(this.href);return false;">
+<img src="/club/plugins/content/avreloaded/160x41_Get_Flash_Player.jpg" alt="Télécharger le lecteur Adobe Flash ici" style="border:0" /></a></div></ins></span>
+
+<script type="text/javascript">
+swfobject.embedSWF('/club/plugins/content/avreloaded/mediaplayer.swf','avreloaded0','400','320','9.0.115','/club/plugins/content/avreloaded/expressinstall.swf',
+{
+	file:'http://prophetmaster.dyndns.org/club/images/stories/videos/test2.xml',width:'400',height:'320',javascriptid:'p_avreloaded0',
+displayheight:'320',
+logo:'http://prophetmaster.dyndns.org/club/images/stories/logo.png',
+showeq:'false',searchbar:'false',enablejs:'true',autostart:'true',showicons:'false',showstop:'false',showdigits:'false',
+showdownload:'false',usefullscreen:'true',backcolor:'0xFFFFFF',frontcolor:'0x000000',
+lightcolor:'0x000000',screencolor:'0x000000',overstretch:'false'}
+,{allowscriptaccess:'always',seamlesstabbing:'true',allowfullscreen:'true',wmode:'transparent',bgcolor:'#000000',menu:'true'},
+{id:'p_avreloaded0',styleclass:'allvideos'});
+</script><script type="text/javascript">window.addEvent("domready",function(){var s = "warnflashavreloaded0"; if ($(s)){$(s).setOpacity(1);}});</script>
+</body>
+</html>

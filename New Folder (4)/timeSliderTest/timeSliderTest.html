@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>jQuery UI Slider - Snap to increments</title>
+	<style type="text/css" media="screen">
+		@import url("ui.all.css");
+		@import url("demos.css");		
+		@import url("base.css");
+		@import url("ui.base.css");
+		@import url("CAARCLGH.css");
+		@import url("CAWTM3OT.css");
+		@import url("ui.theme.css");
+		@import url("ui.progressbar.css");
+		</style>	
+	<script type="text/javascript" src="jquery-1.3.1.js"></script>
+	<script type="text/javascript" src="ui.core.js"></script>
+	<script type="text/javascript" src="ui.slider.js"></script>
+	<script type="text/javascript" src="ui.progressbar.js"></script>
+
+			<script src="jquery-1.3.js" type="text/javascript"></script>
+			<script src="jquery.ui.all.min.js" type="text/javascript"></script>
+			<script src="demos.js" type="text/javascript"></script>
+
+<!--			<script src="/themeroller/themeswitchertool/" type="text/javascript"></script>-->
+	
+
+	<style type="text/css">
+		#demo-frame > div.demo { padding: 10px !important; };
+	</style>
+	<script type="text/javascript">
+
+	var index = 0;
+		
+	function anima1(){
+	//play animation1, which is 15 seconds long
+	}
+
+	function anima2(){
+	//play animation2
+	
+	for(; index < 100; index = index + 10)
+		{
+
+			$("#amount").val('$' + $("#slider").slider("value"));
+
+			setTimeout("anima2", 1000);
+
+			$("#slider").slider(index);
+
+		}
+	}
+
+	$(function() {
+		$("#slider").slider({
+			value:0,
+			min: 0,
+			max: 500,
+			step: $index,
+
+			slide: function(event, ui) {
+
+				$("#amount").val('$' + ui.value);
+				alert(index);
+			}
+		});
+
+		
+
+	});
+	</script>
+	
+	
+	
+	<script type="text/javascript">
+	$(function() {
+		$("#progressbar").progressbar({
+			value: 37
+		});
+	});
+	</script>
+
+</head>
+<body onLoad="anima2()">
+
+<div class="demo">
+<p>
+<label for="amount">Donation amount ($50 increments):</label>
+<input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" />
+</p>
+
+<div id="slider"></div>
+
+<br>
+<br>
+<div id="progressbar"></div>
+</div><!-- End demo -->
+
+
+</body>
+</html>
+

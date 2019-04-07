@@ -1,0 +1,771 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>hypestart - YOUR CREATIVE INTERVIEW</title>
+<style type="text/css">
+
+body {
+	margin-left: 0px;
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-bottom: 3px;
+	background-color: #CCCCCC;
+}
+
+.topInfo_Main{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight:800;
+	color:#898989;
+	padding-left: 80px;
+}
+.topInfo_Sub{font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight:800; color:#fc4e90; padding-left: 0px; }
+.topInfo_SubSub{font-family: Arial; font-size: 14px; font-weight:bold; color: #717171; padding-left: 80px; }
+
+
+
+.style4 {font-family: Arial, Helvetica, sans-serif; font-size: 10px; color: #898989; }
+
+.style5 {font-family: Arial; font-size: 13px; font-weight:bold; color: #717171; }
+a.style5:hover {font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000; }
+
+a.style6 {font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #898989; }
+a.style6:hover {font-family: Arial, Helvetica, sans-serif; font-size: 11px; color:#fe2577; }
+
+.style7 {font-family: Arial, Helvetica, sans-serif; font-size: 20px; color:#898989; padding-left: 25px; }
+.style7_1 {font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:#898989; padding-left: 0px; }
+.style7_1b {font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 700; color: #464646; padding-top: 10px; }
+a.style7_1b:hover {font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 800; color: #028fd4; padding-top: 10px; }
+
+.style8 {font-family: Arial, Helvetica, sans-serif; font-size: 21px; color: #028fd4; padding-top: 15px; padding-bottom: 15px; padding-right:20px; font-weight: bold; }
+a.style8:hover {font-family: Arial, Helvetica, sans-serif; font-size: 21px; color: #464646; padding-top: 15px; padding-bottom: 15px; padding-right:20px; font-weight: bold; text-decoration:underline;}
+
+.container {
+	width: 360px;
+	height: 260px;
+	text-align: left;
+	border-color:#00FFFF;
+	position: relative;
+
+	}
+.placeholderclass
+{
+	/*margin: 0 auto;*/
+}
+.divDescriptionClass
+{
+	font-family:Verdana;
+	font-size:16px;
+	color:#CC0000;
+}
+.style9 {
+	font-size: 14px;
+	color: #464646;
+	padding-left: 10px;
+	padding-top: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 400;
+	padding-right: 2px;
+}
+.style11 {
+color: #FFFFFF;
+font-family: Arial, Helvetica, sans-serif;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+
+/*font-weight:bold;*/
+}
+.q{
+	text-decoration:none;
+	cursor:pointer;
+}
+.q:hover{
+	text-decoration:underline;
+	cursor:pointer;
+}
+</style>
+<script type="text/javascript" src="swfobject.js"></script>
+
+    
+<script type="text/javascript">
+
+var currentState = "NONE"; 
+var previousState = "NONE"; 
+var firstPlay = 1;
+var videoID = 0;
+var randomPlay = 0;
+var time = null;
+
+/*these variables are for timeslider*/
+var c=0;
+var t;
+/*these 2 functions are for timeslider*/
+function timedCount()
+{
+
+c=c+1;
+document.getElementById('sliderBall').style.position = "relative";
+document.getElementById('sliderBall').style.marginLeft = c + "px";
+t=setTimeout("timedCount()",500);
+}
+
+function stopCount()
+{
+	clearTimeout(t);
+}
+
+/*these functions are for player*/
+var Firstplayer = null;
+var SecondPlayer = null;
+
+
+function playerReady(thePlayer) {
+	if(thePlayer.id == "player1")
+	{
+		Firstplayer = document.getElementById(thePlayer.id);
+		addListeners();
+	}
+	else
+	{
+		SecondPlayer = document.getElementById(thePlayer.id);
+	}
+	
+}
+
+function addListeners() {
+	if (Firstplayer) { 
+		Firstplayer.addModelListener("STATE", "stateListener");
+		Firstplayer.addModelListener('TIME', 'timeMonitor');
+		Firstplayer.addControllerListener('ITEM','itemMonitor');
+	}
+	else
+	{
+		if(!SecondPlayer)
+		{	
+			setTimeout("addListeners()",100);
+		}
+	}
+}
+function timeMonitor(obj)
+{
+    time = obj.position;
+    if(time == "5.3")
+    {
+        /*alert("change your image!!!");*/
+        var imagePath = "./images/image-12.JPG";
+        document.getElementById("divpicture").style.backgroundImage = "url("+ imagePath + ")";
+    }
+    if(time == "7.6")
+    {
+        /*alert("change your image!!!");*/
+        var imagePath = "./images/image-13.JPG";
+        document.getElementById("divpicture").style.backgroundImage = "url("+ imagePath + ")";
+    }
+    if(time == "11.8")
+    {
+        /*alert("change your image!!!");*/
+        var imagePath = "./images/image-14.JPG";
+        document.getElementById("divpicture").style.backgroundImage = "url("+ imagePath + ")";
+    }
+    if(time == "23.4")
+    {
+        /*alert("change your image!!!");*/
+        var imagePath = "./images/image-15.JPG";
+        document.getElementById("divpicture").style.backgroundImage = "url("+ imagePath + ")";
+    }
+
+    gid('time').innerHTML = obj.position;
+};
+
+var currentItem = -1;
+function itemMonitor(obj)
+{
+    /*alert("I'm here");*/
+//    if(obj.index != currentItem)
+//    {
+//        gid2('location').innerHTML = lst[obj.index]['location'];
+//    }
+//    currentItem = obj.index;
+
+};
+
+function gid2(name)
+{
+//    return document.getElementById(name);
+};
+
+function gid(name)
+{
+    return document.getElementById(name);
+};
+
+function stateListener(obj) { //IDLE, BUFFERING, PLAYING, PAUSED, COMPLETED
+	currentState = obj.newstate; 
+	previousState = obj.oldstate; 
+	
+	if(Firstplayer)
+	{
+	    /*alert("Current State: " + currentState + " --- Previous State: " + previousState + " --- Video ID: " + videoID);*/
+		if(firstPlay == 1)
+		{	
+            
+			if (((currentState == "BUFFERING") || (currentState == "PLAYING") )&&(previousState == "IDLE"))
+			{
+			    if(randomPlay == 0)
+			    {
+				    var imagePath = "./images/image-01.JPG";
+				    document.getElementById("divpicture").style.backgroundImage = "url("+ imagePath + ")";
+				    document.getElementById("ActiveDescriptionMarker").innerHTML = videoID+1;
+				    document.getElementById("divDescription").innerHTML = DescriptionArrary[videoID];
+    				/*document.getElementById("ActiveDescriptionMarker").src = "/images/pink_circles_1.gif";*/
+    				
+				    document.getElementById("Project1").bgColor="#FC4E90";
+    				
+				    /*start timeslider*/
+				    timedCount();
+				}
+			} 
+			firstPlay = 0;
+		}
+		if((currentState == "BUFFERING") || (currentState == "PAUSED"))
+		{
+			
+			stopCount();
+		}
+		if(currentState == "PLAYING")
+		{
+			timedCount();
+		}
+	
+		if((currentState == "BUFFERING") || (currentState == "PLAYING") || (currentState == "PAUSED"))
+		{
+				document.getElementById("Project"+(videoID + 1)).bgColor="#FC4E90";
+		}
+		if ((currentState == "COMPLETED")&&((previousState == "PLAYING") || (previousState == "PAUSED"))) 
+		{
+            /*alert("video " + videoID + " is finished" );*/
+			
+			if((videoID % 2) == 0)
+			{
+				document.getElementById("Project"+(videoID + 1)).bgColor = "#898989";
+			
+			}
+			else
+			{
+
+				document.getElementById("Project"+(videoID + 1)).bgColor = "#A8A8A8";
+			
+			}
+			
+		
+			/*end timeslider*/
+			stopCount();
+		
+			/*change all events again*/
+	
+			/*change video*/
+			videoID = videoID + 1;
+			
+            
+			if (videoID == 3)
+			{
+				videoID = 0;
+				document.getElementById("divpicture").style.backgroundImage = "";
+				document.getElementById("divDescription").innerHTML = "";
+				return;
+			}
+			
+			var tagId = videoID + 1;
+			
+			document.getElementById("Project"+ tagId).bgColor="#FC4E90";
+			
+			/*alert("Video ID: " + videoID + " Before Loading");*/
+			
+			Firstplayer.sendEvent('LOAD', lst[videoID]);
+			Firstplayer.sendEvent('PLAY', 'true');
+			/*alert("Video ID: " + videoID + " After Loading");*/
+			
+			
+			/*change description*/
+			document.getElementById("divDescription").innerHTML = DescriptionArrary[videoID];
+			
+			/*document.getElementById("ActiveDescriptionMarker").src = "/images/pink_circle_" + tagId + ".gif";*/
+			
+			var imagePath = "./images/image-0" + (videoID+1) + ".JPG";
+	
+			document.getElementById("divpicture").style.backgroundImage = "url("+ imagePath + ")";
+			
+			/*stopCount();*/
+			
+	
+		}
+	}
+}
+
+function changeProject(id)
+{
+    /*set random play flag*/
+    randomPlay = 1;
+	videoID = id;
+	
+	if((videoID % 2) == 0)
+			{
+				document.getElementById("Project"+(videoID + 1)).bgColor = "#898989";
+			
+			}
+			else
+			{
+
+				document.getElementById("Project"+(videoID + 1)).bgColor = "#A8A8A8";
+			
+			}
+	
+	/*change div image background*/
+	var imagePath = "./images/image-0" + (id + 1) + ".JPG";
+	
+	document.getElementById("divpicture").style.backgroundImage = "url("+ imagePath + ")";
+	
+	/*change description*/
+	document.getElementById("divDescription").innerHTML = DescriptionArrary[id];
+	/*document.getElementById("ActiveDescriptionMarker").src = "/images/pink_circle_" + (id+1) + ".gif";*/
+	
+	/*change video*/
+
+	
+	
+	if(Firstplayer)
+	{
+		Firstplayer.sendEvent('LOAD', lst[videoID]);
+		Firstplayer.sendEvent('PLAY', 'true');
+	}
+}
+
+
+
+function createPlayer() 
+{
+
+var flashvars = {
+		file:"http://www.sgcsoft.net/work/flvPlayer/videos/8199.flv",
+		autostart:"false",
+		playlist:"bottom",
+		playlistsize:"0",
+		shuffle:"false",
+		repeat:"list"
+}
+
+var params = {
+allowfullscreen:"true",
+allowscriptaccess:"always",
+wmode: "transparent"
+}
+
+var attributes = {
+id:"player1",
+name:"player1"
+}
+
+
+swfobject.embedSWF("player.swf", "placeholder1", "196", "244", "9.0.115", false, flashvars, params, attributes);
+
+}
+
+function createPlayerForQUESTION() 
+{
+
+var flashvars = {
+		file:"http://www.sgcsoft.net/work/flvPlayer/videos/8199.flv",
+		autostart:"false",
+		playlist:"bottom",
+		playlistsize:"0",
+		shuffle:"false",
+		repeat:"list"
+		
+}
+
+var params = {
+allowfullscreen:"true",
+allowscriptaccess:"always"
+}
+
+var attributes = {
+id:"player2",
+name:"player2"
+}
+
+
+swfobject.embedSWF("player.swf", "placeholder2", "196", "244", "9.0.115", false, flashvars, params, attributes);
+
+}
+
+function questionMouseClick(questionId)
+{
+	
+	if (SecondPlayer)
+	{
+	   	SecondPlayer.sendEvent('LOAD', lst[questionId]);
+		SecondPlayer.sendEvent('PLAY', 'true');
+	}
+/*	player2.sendEvent('PLAY', true);*/
+
+}
+/*inline playlist*/
+
+var lst = new Array();
+lst[0] = {  
+/*	author:"Jeroen Wijering",
+	description:"Nightly heart pounding paranoia - What was that in the grass?",*/
+	/*autostart: "true",*/
+	file:"http://www.sgcsoft.net/work/flvPlayer/videos/8199.flv",
+	autostart: "false",
+	link:"http://www.jeroenwijering.com"
+	/*image:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/thumb-video.jpg",
+	title:"Grass by Night",
+	type:"video"*/
+	
+		/*author:"Anonymous",
+		description:"STARTING VIDEO",
+		file:"http://content.bitsontherun.com/videos/3ta6fhJQ.flv",
+		autostart:"true",
+		playlist:"bottom",
+		playlistsize:"100",
+		shuffle:"false",
+		repeat:"always"*/
+}
+
+lst[1] = {
+/*	author:"Anonymous",
+	description:"Classical TV testpicture.png image and whitenoise.mp3",*/
+	file:"http://www.sgcsoft.net/work/flvPlayer/videos/sound_whitenoise.mp3",
+	autostart:"true",
+	link:"http://www.jeroenwijering.com"
+	/*image:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/testpicture.png",
+	title:"Testpicture",
+	type:"sound"*/
+}
+
+lst[2] = {
+/*	author:"Anonymous",*/
+	/*description:"Classical TV testpicture - and the annoying 440hz tone.",*/
+	file:"http://www.sgcsoft.net/work/flvPlayer/videos/testvideo.flv",
+	autostart:"true",
+	link:"http://www.jeroenwijering.com"
+	/*image:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/thumb-testvideo.gif",
+	title:"Testvideo",
+	type:"video"*/
+}
+
+/*lst[3] = {  
+	author:"Vivie",
+	description:"The art exhibition is over now - but the song is still cute.",
+	file:"http://www.metinberlin.org/files/amerika.mp3",
+	link:"http://www.metinberlin.org",
+	image:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/franzosen.jpg",
+	title:"a.m.e.r.i.k.a",
+	type:"sound"
+}
+
+lst[4] = {  
+	author:"Anonymous",
+	description:"Classical TV testpicture - and the annoying 440hz tone.",
+	file:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/testvideo.flv",
+	link:"http://www.jeroenwijering.com",
+	image:"http://home5.inet.tele.dk/nyboe/flash/mediaplayer/thumb-testvideo.gif",
+	title:"Testvideo",
+	type:"video"
+}*/
+
+</script>
+
+<script type="text/JavaScript">
+
+/*function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+*/
+</script>
+<script type="text/javascript">
+
+function changeHeaderColor(tdId)
+{
+	document.getElementById("Project"+tdId).bgColor="#FC4E90";
+}
+function restoreHeaderColor(tdId)
+{
+    if((tdId % 2)== 1)
+    {
+        document.getElementById("Project"+tdId).bgColor="#898989";
+    }
+    else
+    {
+        document.getElementById("Project"+tdId).bgColor="#A8A8A8";
+    }
+}
+
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+/*function description()
+{
+    	var des = "";
+	for ( var i = 0; i < 3; i++)
+	{
+	    des += "<span ><img src=""images/ash_circle.gif"" /></span>";
+	}
+	document.getElementById("allProjectNo").innerHTML = des;
+
+}*/
+</script>
+</head>
+
+<body onLoad="createPlayer();createPlayerForQUESTION();MM_preloadImages('images/btn_pause_n.gif','images/btn_browseportfolios_h.gif','images/btn_browsejobs_h.gif','images/btn_yourportfolio_h.gif','images/bottom_arrow_h.gif');">
+<table width="1024" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+  <tr>
+    <th width="42" height="25" scope="col">&nbsp;</th>
+    <th height="25" align="right" scope="col"><a href="#" class="style6">Log-In</a></th>
+    <th width="42" height="25" scope="col">&nbsp;</th>
+  </tr>
+  <tr>
+    <td width="42" height="100">&nbsp;</td>
+    <td><img src="images/headergif.gif" width="940" height="100" /></td>
+    <td width="42">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="42" height="28">&nbsp;</td>
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th width="4%" scope="col"><img src="images/menuleft_blank.gif" width="40" height="28" /></th>
+        <th width="19%" scope="col"><img src="images/btn_topportfolios_h.gif" width="180" height="28" /></th>
+        <th width="19%" scope="col"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image4','','images/btn_browseportfolios_h.gif',1)"><img src="images/btn_browseportfolios_n.gif" name="Image4" width="180" height="28" border="0" id="Image4" /></a></th>
+        <th width="19%" scope="col"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image5','','images/btn_browsejobs_h.gif',1)"><img src="images/btn_browsejobs_n.gif" name="Image5" width="180" height="28" border="0" id="Image5" /></a></th>
+        <th width="19%" scope="col"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image6','','images/btn_employers_h.gif',0)"><img src="images/btn_employers_n.gif" name="Image6" width="180" height="28" border="0" id="Image6" /></a></th>
+        <th width="19%" scope="col"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image7','','images/btn_yourportfolio_h.gif',1)"><img src="images/btn_yourportfolio_n.gif" name="Image7" width="180" height="28" border="0" id="Image7" /></a></th>
+      </tr>
+    </table></td>
+    <td width="42">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="42" height="80">&nbsp;</td>
+    <td valign="top" bgcolor="#EEEEEE"><table width="100%" height="80" border="0" align="left" cellpadding="0" cellspacing="0">
+      <tr>
+        <td bgcolor="#EEEEEE"><div style="background-color:#FFFFFF; height:6px;"></div></td>
+      </tr>
+      <tr>
+        <td height="80"><span class="topInfo_Main">Philippe Jones</span><span class="topInfo_Sub"> - Currently Seeking: Full-Time, Freelance and Part-Time Positions!</span><br />
+          <span class="topInfo_SubSub">Los Angeles, CA</span><br />
+          <span class="topInfo_SubSub">Art Center College of Design - BS, Product Design 2006</span></td>
+      </tr>
+    </table>      </td>
+  </tr>
+  <tr>
+    <td width="42" height="95">&nbsp;</td>
+    <td height="95"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="right"><span><a href="#" class="style5">RESUME</a></span></td>
+      </tr>
+      <tr>
+        <td align="right"><span><a href="#" class="style5">CONTACT</a></span></td>
+      </tr>
+      <tr>
+        <td align="right"><span><a href="#" class="style5">SCHEDULE AN INTERVIEW</a></span></td>
+      </tr>
+      <tr>
+        <td align="right"><span><a href="#" class="style5">ADD TO CANIDATES</a></span></td>
+      </tr>
+      <tr>
+        <td height="15" align="right"><span><a href="#" class="style5">SEND/SHARE</a></span></td>
+      </tr>
+    </table></td>
+    <td width="42" height="95">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="42" height="28">&nbsp;</td>
+    <td height="28">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#d4d4d4">
+      <tr>
+        <th align="left" width="16%" scope="col"><img src="images/img_projects.gif" width="148" height="28" /></th>
+		<td id="Project1" align="center"  width="25%" bgcolor="#898989" class="style11" scope="col"><span onclick="changeProject(0);">1 HP Commercial </span> </td>
+		<td id="Project2" align="center"  width="25%" scope="col" bgcolor="#A8A8A8" class="style11" ><span onclick="changeProject(1);">2 Cellphone Design </span></td>
+		<td id="Project3" align="center" width="25%" scope="col" bgcolor="#898989" class="style11" ><span onclick="changeProject(2);">3 Furniture Design </span></td>
+
+      </tr>
+    </table></td>
+    <td width="42" height="28">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="42" height="500">&nbsp;</td>
+    <td height="500" valign="top" bgcolor="#e9e9e9">
+		<div class="style7" style="position:relative; height:20px; padding-top:8px; padding-bottom:8px;">1 HP Commercial - Storyboards and Animation Direction</div>
+		<div style="position:relative; width:650px; height:400px; background-color:#000000; margin-left:25px;">
+			<div style="margin-top:5px; position:relative; width:650px; height:380px; background-color:#544041; z-index: 10;">
+			<div id="divpicture" style="width:100%; height:100%; position:absolute; z-index:-1; background-repeat:no-repeat; background-position:center; "></div>
+			</div>
+		</div>
+		<div class="style7" style="margin-left:660px; margin-top:-404px; position:relative; height:20px; width:180px;">Philippe Jones</div>
+		<div style="margin-left:688px; margin-top:5px; position:relative; height:244px; width:196px; background-color: #966e31;">
+			<div id="placeholder1" style="height:244px; width:196px;"></div>
+		</div>
+      <div class="style5" style="margin-top:130px; margin-left:25px; position:relative; height:52px; width:650px; background-color: #464646;">
+        <a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','images/btn-PAUSE-N.gif',1)"><img src="images/btn_play_n.gif" name="Image9" width="54" height="52" border="0" id="Image9" /></a>
+		<div style="margin-right:10px; margin-left:64px; margin-top:-28px; background-color:#999999; height:5px;"><img id="sliderBall" style="position:relative; margin-top:-5px; margin-left:0px;" alt="Time Slider" src="images/white_progess_ball.gif" /></div>
+	  </div>
+		
+		
+		
+		
+		<div class="style5" style="margin-left:688px; margin-top:-165px; position:relative; height:150px; width:196px;">
+		<div class="style5">Description: </div>
+		<br />
+		<!--<div id="time"></div>-->
+		<!--<div id="location"></div>-->
+		<div id="divDescription" class="style5"> <span><img id ="ActiveDescriptionMarker" /></span></div>
+		</div>
+		
+		<br />
+		
+		<div id="allProjectNo" style="width:196px; height:18px; margin-left:688px; z-index:20;" align="left">
+			<span><img src="images/pink_circle_1.gif" width="16" height="16" /></span>&nbsp;&nbsp;&nbsp;
+			<span ><img src="images/ash_circle_2.gif" /></span>&nbsp;&nbsp;&nbsp;
+			<span ><img src="images/ash_circle_3.gif" /></span>&nbsp;&nbsp;&nbsp;
+			<span ><img src="images/ash_circle_4.gif" /></span>&nbsp;&nbsp;&nbsp;		</div>
+		
+	    <br />
+    </td>
+    <td width="42" height="500">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="42">&nbsp;</td>
+    <td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>
+			<div style="margin-top:20px; position:relative; height:400px; background-color: #e9e9e9;">
+			  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <th scope="col"><div align="left" class="style7">Ask Philippe Some Questions:</div></th>
+                </tr>
+                <tr>
+                  <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="7%"><img src="images/bullet_play.gif" onclick="questionMouseClick(0);" width="24" height="24" hspace="25" vspace="8" /></td>
+                      <td width="63%" class="style7_1"><span class="q" onclick="questionMouseClick(0);">1. What role does 3D software play in your desing process?</span></td>
+                      <td colspan="3" rowspan="6">
+					  	<div style="margin-left:28px; margin-top:5px; position:relative; height:240px; width:196px; background-color: #966e31;">
+							<div id="placeholder2" style="height:244px; width:196px;"></div>
+						</div>					</td>
+                    </tr>
+                    <tr>
+                      <td><img src="images/bullet_play.gif" width="24" onclick="questionMouseClick(1);" height="24" hspace="25" vspace="5" /></td>
+                      <td class="style7_1"><span class="q" onclick="questionMouseClick(1);">2. Explain a time when you had to take a leadership position in a design project?</span></td>
+                      </tr>
+                    <tr>
+                      <td><img src="images/bullet_play.gif" width="24" onclick="questionMouseClick(2);"  height="24" hspace="25" vspace="5" /></td>
+                      <td class="style7_1"><span class="q" onclick="questionMouseClick(2);">3. Where do you see yourself in 5 years?</span></td>
+                      </tr>
+                    <tr>
+                      <td><img src="images/bullet_play.gif" width="24" onclick="questionMouseClick(0);"  height="24" hspace="25" vspace="5" /></td>
+                      <td class="style7_1"><span class="q" onclick="questionMouseClick(0);">4. What do you see as your greatest strength?</span></td>
+                      </tr>
+                    <tr>
+                      <td><img src="images/bullet_play.gif" width="24" onclick="questionMouseClick(1);"  height="24" hspace="25" vspace="8" /></td>
+                      <td class="style7_1"><span class="q" onclick="questionMouseClick(1);">5. What do you see as your greatest weakness?</span></td>
+                      </tr>
+                    <tr>
+                      <td>&nbsp;</td>
+                      <td><span class="style9">IS YOUR QUESTION NOT LISTED?</span><span class="style7_1b"><a href="#" class="style7_1b">REQUEST A QUESTION</a></span></td>
+                    </tr>
+					<tr>
+                      <td height="50" >&nbsp;</td>
+                      <td height="80" colspan="4" align="right"><span class="style8"><a href="#" class="style8">GO TO NEXT SET OF QUESTIONS (1/4)</a></span><div style="width:31px; height:27px; margin-top:-27px; padding-top:2px; padding-right:2px;"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image18','','images/bottom_arrow_h.gif',1)"><img src="images/bottom_arrow.gif" name="Image18" width="28" height="25" border="0" id="Image18" /></a></div></td>
+                      <td width="6%" ></td>
+					</tr>
+                  </table></td>
+                </tr>
+                <tr>
+                  <td height="21">&nbsp;</td>
+                </tr>
+              </table>
+			</div>
+		</td>
+	  </tr>
+    </table></td>
+    <td width="42">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="42">&nbsp;</td>
+    <td>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="8" valign="bottom"><img src="images/line_bottom.gif" width="944" height="2" /></td>
+      </tr>
+	  <tr>
+        <th width="113" height="40" align="left" valign="middle" scope="col"><span><a href="#" class="style6">Join HypeStart</a></span></th>
+        <th width="106" height="40" valign="middle" scope="col"><span><a href="#" class="style6">About Us</a></span></th>
+        <th width="111" height="40" valign="middle" scope="col"><span><a href="#" class="style6">FAQ</a></span></th>
+        <th width="78" height="40" valign="middle" scope="col"><span><a href="#" class="style6">Blog</a></span></th>
+        <th width="138" height="40" valign="middle" scope="col"><span><a href="#" class="style6">Terms of Use</a></span></th>
+        <th width="123" height="40" valign="middle" scope="col"><span><a href="#" class="style6">Privacy Policy</a></span></th>
+        <th width="151" height="40" valign="middle" scope="col"><span><a href="#" class="style6">Copyright and IP Policy</a></span></th>
+        <th width="124" height="40" align="right" valign="middle" scope="col"><span><a href="#" class="style6">Contact Us</a></span></th>
+      </tr>
+      <tr>
+        <td colspan="4">&nbsp;</td>
+		<td colspan="4" align="right" valign="top" class="style4">&copy; Copyright HypeStart 2009</td>
+      </tr>
+    </table></td>
+    <td width="42">&nbsp;</td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+	var DescriptionArrary = new Array();
+	DescriptionArrary[0] = "";
+	/*DescriptionArrary[0] = "1: This piece was made while I was working at Motion Theory in Los Angeles. I want to point out the parts that I worked on - i designed all the storyboards for this piece, as well as directed the animation for it.";*/
+	DescriptionArrary[1] = "2: This piece was made while I was working at Motion Theory in Los Angeles. I want to point out the parts that I worked on - i designed all the storyboards for this piece, as well as directed the animation for it.";
+	DescriptionArrary[2] = "3: This piece was made while I was working at Motion Theory in Los Angeles. I want to point out the parts that I worked on - i designed all the storyboards for this piece, as well as directed the animation for it.";
+	
+</script>
+</body>
+</html>

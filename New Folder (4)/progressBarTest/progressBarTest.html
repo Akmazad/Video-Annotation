@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>jQuery UI Progressbar - Default functionality</title>
+	<style type="text/css" media="screen">
+		@import url("ui.all.css");
+		@import url("demos.css");
+		@import url("ui.progressbar.css");
+		</style>
+
+	<script type="text/javascript" src="jquery-1.3.1.js"></script>
+	<script type="text/javascript" src="ui.core.js"></script>
+	<script type="text/javascript" src="ui.progressbar.js"></script>
+
+	<script type="text/javascript">
+	var ind = 2;
+	
+	function aaa()
+	{
+		for(; ind < 100;ind = ind + 10)
+		{
+			for (var i = 0; i < 10000; i++)
+			{			
+			}
+			$("#progressbar").progressbar({
+				value: ind
+			});
+		}
+
+
+	}
+	
+/*	$(function() {
+
+		
+	});
+*/	function animate()
+	{
+		
+	}
+	</script>
+</head>
+<body onLoad="aaa()">
+
+<div class="demo">
+
+	<div id="progressbar"></div>
+
+</div><!-- End demo -->
+
+
+
+<div class="demo-description">
+
+<p>Default determinate progress bar.</p>
+
+</div><!-- End demo-description -->
+
+
+
+</body>
+</html>

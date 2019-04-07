@@ -1,0 +1,9 @@
+body {
+	background-image: url(images/wrap.gif);
+	background-repeat: repeat-x;	
+
+}
+#wrap{
+	background-image: url(images/wrap.gif);
+	background-repeat: repeat-y;
+}

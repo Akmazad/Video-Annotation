@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Document sans nom</title>
+<script type="text/javascript" src="swfobject.js"></script>
+<script type="text/javascript">
+ 
+ var player = null;
+
+
+		var player = null; 
+		function playerReady(obj)
+		{
+		 player = window.document[obj.id];
+		 alert(player);
+		}
+
+      
+      function stateMonitor(obj)
+      {
+        if(obj.newstate == 'COMPLETED')
+        {
+          // drop out of fullscreen
+          // this.window.focus();
+
+          // load a new page
+          // window.location = 'http://www.google.com';
+		  alert("HI");
+        }
+      };
+
+      function gid(name)
+      {
+        return document.getElementById(name);
+      };
+	  
+function createPlayer() {
+var flashvars = {
+file:"video.flv",
+autostart:"false"
+}
+
+var params = {
+allowfullscreen:"true",
+allowscriptaccess:"always"
+}
+
+var attributes = {
+id:"player1",
+name:"player1"
+}
+
+swfobject.embedSWF("player.swf", "placeholder1", "320", "196", "9.0.115", false, flashvars, params, attributes);
+
+}
+</script>
+</head>
+
+<body onload="createPlayer();">
+
+<!--<object height="196" width="320" type="application/x-shockwave-flash" id="player1" name="player1" data="player.swf">
+<param name="allowfullscreen" value="true"/>
+<param name="allowscriptaccess" value="always"/>
+<param name="flashvars" value="file=video.flv&autostart=true"/>
+</object>-->
+
+
+
+<div id="placeholder1">
+<a href="http://www.adobe.com/go/getflashplayer">Get flash</a> to see this player
+</div>
+<br>
+
+<div id="stat"></div>
+
+
+
+</body>
+</html>

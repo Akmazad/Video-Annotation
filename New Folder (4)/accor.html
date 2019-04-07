@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>JW API Example 1-3-1-0 - Object/Embed code</title>
+        <style type="text/css">
+          #wrapper { position:absolute; left:64px; top:128px; width:320px; height:240px; background-color:#FFFFFF; }
+        </style>
+		<script type="text/javascript" language="javascript">
+		
+		var player;
+		function playerReady(obj)
+		{
+			alert('the videoplayer '+obj['id']+' has been instantiated');
+			player = document.getElementById(obj['id']);
+		};
+
+			
+
+</script>
+    </head>
+    <body>
+        <div id="wrapper">  
+
+            <object id="player1"
+                    classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                    codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10.0.12.36"                    
+                    width="320" height="240">
+                <param name=bgcolor value="#FFFFFF">
+                <param name=movie value="player.swf">
+                <param name=allowfullscreen value="true">
+                <param name=allowscriptaccess value="always">
+                <param name="flashvars" value="file=video.flv&fullscreen=true&controlbar=bottom">
+
+                <embed name="player1" 
+                    type="application/x-shockwave-flash" 
+                    pluginspage="http://www.macromedia.com/go/getflashplayer" 
+                    width="320" height="240" 
+                    bgcolor="#FFFFFF" 
+                    src="player.swf"
+                    allowfullscreen="true"
+                    allowscriptaccess="always"
+                    flashvars="file=video.flv&fullscreen=true&controlbar=bottom">
+                </embed>
+            </object>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<style type="text/css">
+.divDescriptionClass {	font-family:Verdana;
+	font-size:16px;
+	color:#CC0000;
+}
+.style5 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #898989; }
+
+</style>
+
+<script type="text/javascript">
+var c=0;
+var t;
+function timedCount()
+{
+document.getElementById('txt').value=c;
+c=c+1;
+document.getElementById('sliderBall').style.position = "relative";
+document.getElementById('sliderBall').style.marginLeft = c + "px";
+t=setTimeout("timedCount()",10);
+}
+
+function stopCount()
+{
+clearTimeout(t);
+}
+</script>
+
+</head>
+
+<body>
+	<div style="height:52px; width:650px; background-color: #464646;">
+		<div style="margin-top:20px; background-color:#000000;"><img id="sliderBall" style="position:relative; margin-left:0px;" alt="Time Slider" src="images/white_progess_ball.gif" /></div>
+	</div>
+	
+	<br />
+	<br />
+	<form>
+		<input type="button" value="Start count!" onClick="timedCount()">
+		<input type="text" id="txt">
+		<input type="button" value="Stop count!" onClick="stopCount()">
+	</form>
+</body>
+</html>
